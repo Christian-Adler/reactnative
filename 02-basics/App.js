@@ -1,6 +1,6 @@
 import {
   Button,
-  ScrollView,
+  FlatList,
   StyleSheet,
   Text,
   TextInput,
@@ -17,8 +17,19 @@ export default function App() {
     setEnteredGoalText(enteredText);
   };
   const addGoalHandler = () => {
-    setGoals((prevState) => [...prevState, enteredGoalText]);
+    setGoals((prevState) => [
+      ...prevState,
+      { text: enteredGoalText, key: Math.random().toString() },
+    ]);
     setEnteredGoalText("");
+  };
+
+  const renderGoal = (itemData) => {
+    return (
+      <View style={styles.goalItem}>
+        <Text style={styles.goalText}>{itemData.item.text}</Text>
+      </View>
+    );
   };
 
   return (
@@ -32,15 +43,7 @@ export default function App() {
         <Button title="Add Goal" onPress={addGoalHandler} />
       </View>
       <View style={styles.goalsContainer}>
-        <ScrollView>
-          <View>
-            {goals.map((goal) => (
-              <View key={goal} style={styles.goalItem}>
-                <Text style={styles.goalText}>{goal}</Text>
-              </View>
-            ))}
-          </View>
-        </ScrollView>
+        <FlatList data={goals} renderItem={renderGoal} />
       </View>
     </View>
   );
