@@ -4,9 +4,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View>
-        <Text>Hallo</Text>
+        <Text style={styles.dummyText}>Hallo</Text>
       </View>
-      <Text>Hallo2</Text>
+      <Text style={styles.dummyText}>Hallo2</Text>
       <Button title="Tap me" />
     </View>
   );
@@ -18,5 +18,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  dummyText: {
+    margin: 16,
+    borderWidth: 2,
+    borderColor: "#f0d",
+    padding: 16,
   },
 });
