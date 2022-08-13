@@ -8,6 +8,7 @@ export default function App() {
       </View>
       <Text style={styles.dummyText}>Hallo2</Text>
       <Button title="Tap me" />
+      <View style={styles.rounded}></View>
     </View>
   );
 }
@@ -25,5 +26,14 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#f0d",
     padding: 16,
+  },
+
+  rounded: {
+    margin: 16,
+    borderWidth: 2,
+    borderColor: "#00a",
+    height: 50,
+    width: 160,
+    borderRadius: 15,
   },
 });
