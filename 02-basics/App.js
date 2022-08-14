@@ -1,12 +1,6 @@
-import {
-  Button,
-  FlatList,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Button, FlatList, StyleSheet, TextInput, View } from "react-native";
 import { useState } from "react";
+import GoalItem from "./components/GoalItem";
 
 export default function App() {
   const [goals, setGoals] = useState([]);
@@ -25,11 +19,7 @@ export default function App() {
   };
 
   const renderGoal = (itemData) => {
-    return (
-      <View style={styles.goalItem}>
-        <Text style={styles.goalText}>{itemData.item.text}</Text>
-      </View>
-    );
+    return <GoalItem text={itemData.item.text} />;
   };
 
   return (
@@ -81,15 +71,5 @@ const styles = StyleSheet.create({
 
   goalsContainer: {
     flex: 5,
-  },
-
-  goalItem: {
-    backgroundColor: "#5e0acc",
-    borderRadius: 6,
-    padding: 8,
-    margin: 80,
-  },
-  goalText: {
-    color: "#fff",
   },
 });
