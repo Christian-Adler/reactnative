@@ -13,8 +13,14 @@ export default function App() {
     ]);
   };
 
+  const deleteGoalHandler = () => {
+    console.log("DELETE");
+  };
+
   const renderGoal = (itemData) => {
-    return <GoalItem text={itemData.item.text} />;
+    return (
+      <GoalItem text={itemData.item.text} onDeleteItem={deleteGoalHandler} />
+    );
   };
 
   return (
