@@ -19,7 +19,7 @@ export default function App() {
   const addGoalHandler = () => {
     setGoals((prevState) => [
       ...prevState,
-      { text: enteredGoalText, key: Math.random().toString() },
+      { text: enteredGoalText, id: Math.random().toString() },
     ]);
     setEnteredGoalText("");
   };
@@ -43,7 +43,11 @@ export default function App() {
         <Button title="Add Goal" onPress={addGoalHandler} />
       </View>
       <View style={styles.goalsContainer}>
-        <FlatList data={goals} renderItem={renderGoal} />
+        <FlatList
+          data={goals}
+          renderItem={renderGoal}
+          keyExtractor={(item, index) => item.id}
+        />
       </View>
     </View>
   );
