@@ -9,11 +9,11 @@ const GoalItem = (props) => {
   };
 
   return (
-    <Pressable android_ripple={{ color: "#dddddd" }} onPress={pressHandler}>
-      <View style={styles.goalItem}>
+    <View style={styles.goalItem}>
+      <Pressable android_ripple={{ color: "#dddddd" }} onPress={pressHandler}>
         <Text style={styles.goalText}>{props.text}</Text>
-      </View>
-    </Pressable>
+      </Pressable>
+    </View>
   );
 };
 
@@ -23,10 +23,10 @@ const styles = StyleSheet.create({
   goalItem: {
     backgroundColor: "#5e0acc",
     borderRadius: 6,
-    padding: 8,
     margin: 80,
   },
   goalText: {
     color: "#fff",
+    padding: 8,
   },
 });
