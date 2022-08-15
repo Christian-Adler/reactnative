@@ -9,7 +9,7 @@ const GoalItem = (props) => {
   };
 
   return (
-    <Pressable onPress={pressHandler}>
+    <Pressable android_ripple={{ color: "#dddddd" }} onPress={pressHandler}>
       <View style={styles.goalItem}>
         <Text style={styles.goalText}>{props.text}</Text>
       </View>
