@@ -1,7 +1,8 @@
 import { Button, FlatList, StyleSheet, View } from "react-native";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   const [goals, setGoals] = useState([]);
@@ -38,27 +39,30 @@ export default function App() {
   };
 
   return (
-    <View style={styles.appContainer}>
-      <Button
-        title="Add new Goal"
-        color="#5e0acc"
-        onPress={startAddGoalHandler}
-      />
-      {
-        <GoalInput
-          onAddGoal={addGoalHandler}
-          onCancel={endAddGoalHandler}
-          visible={modalIsVisible}
+    <Fragment>
+      <StatusBar style="light" />
+      <View style={styles.appContainer}>
+        <Button
+          title="Add new Goal"
+          color="#8856ce"
+          onPress={startAddGoalHandler}
         />
-      }
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={goals}
-          renderItem={renderGoal}
-          keyExtractor={(item /* , index */) => item.id}
-        />
+        {
+          <GoalInput
+            onAddGoal={addGoalHandler}
+            onCancel={endAddGoalHandler}
+            visible={modalIsVisible}
+          />
+        }
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={goals}
+            renderItem={renderGoal}
+            keyExtractor={(item /* , index */) => item.id}
+          />
+        </View>
       </View>
-    </View>
+    </Fragment>
   );
 }
 
