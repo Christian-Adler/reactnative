@@ -13,13 +13,17 @@ export default function App() {
     ]);
   };
 
-  const deleteGoalHandler = () => {
-    console.log("DELETE");
+  const deleteGoalHandler = (id) => {
+    setGoals((oldState) => oldState.filter((goal) => goal.id !== id));
   };
 
   const renderGoal = (itemData) => {
     return (
-      <GoalItem text={itemData.item.text} onDeleteItem={deleteGoalHandler} />
+      <GoalItem
+        text={itemData.item.text}
+        onDeleteItem={deleteGoalHandler}
+        id={itemData.item.id}
+      />
     );
   };
 

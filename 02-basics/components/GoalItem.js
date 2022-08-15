@@ -5,7 +5,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 const GoalItem = (props) => {
   // console.log(props);
   const pressHandler = () => {
-    props.onDeleteItem();
+    props.onDeleteItem(props.id);
   };
 
   return (
