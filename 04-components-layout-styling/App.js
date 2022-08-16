@@ -1,5 +1,11 @@
-import { StatusBar } from "expo-status-bar";
-import { ImageBackground, StyleSheet } from "react-native";
+import { StatusBar as StatusBarExpo } from "expo-status-bar"; // fuer Styling
+import {
+  ImageBackground,
+  Platform,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+} from "react-native";
 import { Fragment, useState } from "react";
 import StartGameScreen from "./screens/StartGameScreen";
 import { LinearGradient } from "expo-linear-gradient";
@@ -18,7 +24,7 @@ export default function App() {
 
   return (
     <Fragment>
-      <StatusBar style="light" />
+      <StatusBarExpo style="light" />
       <LinearGradient colors={["#4e0329", "#ddb52f"]} style={styles.rootScreen}>
         <ImageBackground
           source={require("./assets/images/background.png")}
@@ -26,7 +32,7 @@ export default function App() {
           style={styles.rootScreen}
           imageStyle={styles.backgroundImage}
         >
-          {screen}
+          <SafeAreaView style={styles.safeAreaView}>{screen}</SafeAreaView>
         </ImageBackground>
       </LinearGradient>
     </Fragment>
@@ -39,5 +45,9 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     opacity: 0.15,
+  },
+  safeAreaView: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight || 25 : 0, // Bei Android ohne NodeCam
   },
 });
