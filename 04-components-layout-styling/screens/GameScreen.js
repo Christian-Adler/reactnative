@@ -1,13 +1,24 @@
-// import {useState} from "react";
-// import "./GameScreen.css";
-// import classes from "./GameScreen.module.css";
+import { StyleSheet, Text, View } from "react-native";
 
 const GameScreen = (props) => {
   return (
-    <div>
-      <p></p>
-    </div>
+    <View style={styles.screen}>
+      <Text>Opponent's Guess</Text>
+      {/*GUESS*/}
+      <View>
+        <Text>Higher or lower</Text>
+        {/*+ -*/}
+      </View>
+      <View>{/*LOG ROunds*/}</View>
+    </View>
   );
 };
 
 export default GameScreen;
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    padding: 12,
+  },
+});
