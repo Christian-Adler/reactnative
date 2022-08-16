@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   },
   safeAreaView: {
     flex: 1,
+    padding: 24,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight || 25 : 0, // Bei Android ohne NodeCam
   },
 });
