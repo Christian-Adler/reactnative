@@ -1,4 +1,4 @@
-import { StatusBar as StatusBarExpo } from "expo-status-bar"; // fuer Styling
+import { Fragment, useEffect, useState } from "react";
 import {
   ImageBackground,
   Platform,
@@ -6,16 +6,41 @@ import {
   StatusBar,
   StyleSheet,
 } from "react-native";
-import { Fragment, useState } from "react";
-import StartGameScreen from "./screens/StartGameScreen";
+import { StatusBar as StatusBarExpo } from "expo-status-bar"; // fuer Styling
 import { LinearGradient } from "expo-linear-gradient";
+import * as SplashScreen from "expo-splash-screen";
+import { useFonts } from "expo-font";
+import StartGameScreen from "./screens/StartGameScreen";
 import GameScreen from "./screens/GameScreen";
-import Colors from "./constants/colors";
 import GameOverScreen from "./screens/GameOverScreen";
+import Colors from "./constants/colors";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [userNumber, setUserNumber] = useState(undefined);
   const [gameIsOver, setGameIsOver] = useState(true);
+
+  const [fontsLoaded] = useFonts({
+    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
+    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+  });
+
+  // Watch for fonts to be loaded, then hide the splash screen
+  useEffect(() => {
+    if (fontsLoaded)
+      SplashScreen.hideAsync()
+        // .then((res) => {
+        //   console.log(res);
+        // })
+        .catch((reason) => {
+          console.log(reason);
+        });
+  }, [fontsLoaded]);
+  // Initially return null
+  if (!fontsLoaded) {
+    return null;
+  }
 
   const pickedNumberHandler = (pickedNumber) => {
     setUserNumber(pickedNumber);
