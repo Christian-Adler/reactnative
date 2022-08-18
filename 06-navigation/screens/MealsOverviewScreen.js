@@ -18,8 +18,15 @@ const MealsOverviewScreen = ({ navigation, route }) => {
 
   useLayoutEffect(() => {
     // frueher als useEffect - useEffect erst nach dem ersten durchlauf der Component funktion
-    const categoryTitle = CATEGORIES.find((item) => item.id === catId).title;
-    navigation.setOptions({ title: categoryTitle });
+    const category = CATEGORIES.find((item) => item.id === catId);
+    const categoryTitle = category.title;
+    // const categoryColor = category.color;
+
+    navigation.setOptions({
+      title: categoryTitle,
+      // headerStyle: { backgroundColor: categoryColor },
+      // headerTintColor: "white",
+    });
   }, [catId, navigation]);
 
   const mealItemRenderer = (itemData) => {
