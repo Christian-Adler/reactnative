@@ -1,5 +1,5 @@
 import {Fragment, useEffect, useState} from 'react';
-import {Alert, FlatList, StyleSheet, useWindowDimensions, View} from 'react-native';
+import {Alert, FlatList, StyleSheet, View} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 
 import NumberContainer from '../components/game/NumberContainer';
@@ -8,6 +8,7 @@ import InstructionText from '../components/ui/InstructionText';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import Title from '../components/ui/Title';
 import GuessLogItem from '../components/game/GuessLogItem';
+import useDeviceInfo from "../hooks/DeviceInfo";
 
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -28,7 +29,7 @@ function GameScreen({ userNumber, onGameOver }) {
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [guessRounds, setGuessRounds] = useState([initialGuess]);
   
-  const { height, width } = useWindowDimensions();
+  const { isLandscape } = useDeviceInfo();
   
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -93,7 +94,7 @@ function GameScreen({ userNumber, onGameOver }) {
   </Fragment>;
   
   // landscape (tablet)
-  if (width > 800) {
+  if (isLandscape) {
     content = <Fragment>
       {/*<InstructionText style={styles.instructionText}>*/}
       {/*  Higher or lower?*/}

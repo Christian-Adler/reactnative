@@ -10,8 +10,7 @@ import InstructionText from '../components/ui/InstructionText';
 function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState('');
   
-  const { width, height } = useWindowDimensions();
-  console.log('width', width, 'height', height);
+  const { /*width, */ height } = useWindowDimensions();
   
   function numberInputHandler(enteredText) {
     setEnteredNumber(enteredText);
