@@ -1,6 +1,10 @@
 import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
+// import { useNavigation } from "@react-navigation/native";
 
 const CategoryGridTile = ({ title, color, onPress }) => {
+  // navigation prop gibt es nur in Screens - uber den Hook kann man das navigation-Objekt aber ueberall holen.
+  // const navigation = useNavigation();
+
   return (
     <View style={[styles.gridItem]}>
       <Pressable
