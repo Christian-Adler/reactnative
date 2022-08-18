@@ -4,16 +4,25 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import { Fragment } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import MealsOverviewScreen from "./screens/MealsOverviewScreen";
+import NAV from "./constants/navigation";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <Fragment>
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="MealsCategories" component={CategoriesScreen} />
+          <Stack.Screen
+            name={NAV.MealsCategories}
+            component={CategoriesScreen}
+          />
+          <Stack.Screen
+            name={NAV.MealsOverview}
+            component={MealsOverviewScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Fragment>
