@@ -1,4 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
+import { MEALS } from "../data/dummy-data";
+import MealItem from "../components/MealItem";
 //import {useRoute} from "@react-navigation/native";
 
 const MealsOverviewScreen = ({ /*navigation,*/ route }) => {
@@ -9,9 +11,22 @@ const MealsOverviewScreen = ({ /*navigation,*/ route }) => {
   // route-Objekt per Hook waere in allen Komponenten erreichbar
   // const routeObj = useRoute();
 
+  const displayedMeals = MEALS.filter(
+    (mealItem) => mealItem.categoryIds.indexOf(catId) >= 0
+  );
+
+  const mealItemRenderer = (itemData) => {
+    const item = itemData.item;
+    return <MealItem title={item.title} />;
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Meals Overview Screen - {catId}</Text>
+      <FlatList
+        data={displayedMeals}
+        keyExtractor={(item) => item.id}
+        renderItem={mealItemRenderer}
+      />
     </View>
   );
 };
