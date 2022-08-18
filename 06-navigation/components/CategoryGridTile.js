@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
     height: 250,
     // maxWidth: 200,
     borderRadius: 8,
-    elevation: 4,
     overflow: Platform.select({ ios: "visible", android: "hidden" }), // nur bei android, sonst ist in iOS der Schatten weg
+    elevation: 4,
     shadowColor: "#000",
     shadowOpacity: 0.25,
     shadowRadius: 8,

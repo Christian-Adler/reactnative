@@ -17,7 +17,7 @@ const MealsOverviewScreen = ({ /*navigation,*/ route }) => {
 
   const mealItemRenderer = (itemData) => {
     const item = itemData.item;
-    return <MealItem title={item.title} />;
+    return <MealItem meal={item} />;
   };
 
   return (
@@ -34,5 +34,9 @@ const MealsOverviewScreen = ({ /*navigation,*/ route }) => {
 export default MealsOverviewScreen;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 16 },
+  container: {
+    flex: 1,
+    padding: 16,
+    alignItems: "center",
+  },
 });
