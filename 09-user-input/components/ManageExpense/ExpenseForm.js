@@ -1,9 +1,65 @@
 import { StyleSheet, Text, View } from "react-native";
+import Input from "./Input";
+import { GlobalStyles } from "../../constants/styles";
+import { useState } from "react";
+import Button from "../UI/Button";
 
-const ExpenseForm = (props) => {
+const ExpenseForm = ({ submitButtonLabel, onCancel, onSubmit }) => {
+  const [inputValues, setInputValues] = useState({
+    amount: "",
+    date: "",
+    description: "",
+  });
+
+  const inputChangedHandler = (inputIdentifier, entered) => {
+    setInputValues((prevState) => {
+      return { ...prevState, [inputIdentifier]: entered };
+    });
+  };
+  const submitHandler = () => {};
+
   return (
     <View style={styles.view}>
-      <Text style={styles.text}>ExpenseForm</Text>
+      <Text style={styles.title}>Your Expense</Text>
+      <View style={styles.inputsRow}>
+        <Input
+          label={"Amount"}
+          textInputConfig={{
+            keyboardType: "decimal-pad",
+            onChangeText: inputChangedHandler.bind(this, "amount"),
+            value: inputValues.amount,
+          }}
+          style={styles.rowInput}
+        />
+        <Input
+          label={"Date"}
+          textInputConfig={{
+            onChangeText: inputChangedHandler.bind(this, "date"),
+            value: inputValues.date,
+            placeholder: "YYYY-MM-DD",
+            maxLength: 10,
+          }}
+          style={styles.rowInput}
+        />
+      </View>
+      <Input
+        label={"Description"}
+        textInputConfig={{
+          onChangeText: inputChangedHandler.bind(this, "description"),
+          value: inputValues.description,
+          multiline: true,
+          autoCorrect: false,
+          autoCapitalize: "sentences",
+        }}
+      />
+      <View style={styles.buttonContainer}>
+        <Button mode={"flat"} onPress={onCancel} style={styles.buttonStyle}>
+          Cancel
+        </Button>
+        <Button onPress={submitHandler} style={styles.buttonStyle}>
+          {submitButtonLabel}
+        </Button>
+      </View>
     </View>
   );
 };
@@ -12,14 +68,28 @@ export default ExpenseForm;
 
 const styles = StyleSheet.create({
   view: {
-    flex: 1,
+    // flex: 1,
     flexDirection: "column",
-    alignItems: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
+    marginTop: 40,
+  },
+  title: {
+    color: GlobalStyles.colors.white,
+    fontSize: 24,
+    fontWeight: "bold",
+    marginVertical: 24,
+    textAlign: "center",
+  },
+  inputsRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  rowInput: { flex: 1 },
+  buttonContainer: {
+    flexDirection: "row",
     justifyContent: "center",
-    padding: 8,
+    alignItems: "center",
   },
-  text: {
-    marginHorizontal: 4,
-    fontSize: 12,
-  },
+  buttonStyle: { minWidth: 120, marginHorizontal: 8 },
 });
