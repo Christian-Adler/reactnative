@@ -24,19 +24,9 @@ const ManageExpense = ({ navigation, route }) => {
   const cancelHandler = () => {
     navigation.goBack();
   };
-  const confirmHandler = () => {
-    if (isEditing)
-      expenseCtx.updateExpense(editedExpenseId, {
-        description: "test!!!",
-        amount: 9.11,
-        date: new Date(),
-      });
-    else
-      expenseCtx.addExpense({
-        description: "test",
-        amount: 9.65,
-        date: new Date(),
-      });
+  const confirmHandler = (expenseData) => {
+    if (isEditing) expenseCtx.updateExpense(editedExpenseId, expenseData);
+    else expenseCtx.addExpense(expenseData);
     navigation.goBack();
   };
 

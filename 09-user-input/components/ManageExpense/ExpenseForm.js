@@ -16,7 +16,14 @@ const ExpenseForm = ({ submitButtonLabel, onCancel, onSubmit }) => {
       return { ...prevState, [inputIdentifier]: entered };
     });
   };
-  const submitHandler = () => {};
+  const submitHandler = () => {
+    const expenseData = {
+      amount: +inputValues.amount,
+      date: new Date(inputValues.date),
+      description: inputValues.description,
+    };
+    onSubmit(expenseData);
+  };
 
   return (
     <View style={styles.view}>
