@@ -4,10 +4,10 @@ import { getFormattedDate } from "../../util/date";
 import { useNavigation } from "@react-navigation/native";
 import { NAV } from "../../constants/navigation";
 
-const ExpenseItem = ({ description, amount, date }) => {
+const ExpenseItem = ({ id, description, amount, date }) => {
   const navigation = useNavigation();
   const expensePressHandler = () => {
-    navigation.navigate(NAV.ManageExpense);
+    navigation.navigate(NAV.ManageExpense, { expenseId: id });
   };
 
   return (
