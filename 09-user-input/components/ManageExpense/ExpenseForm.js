@@ -10,25 +10,62 @@ const ExpenseForm = ({
   onSubmit,
   defaultValues,
 }) => {
-  const [inputValues, setInputValues] = useState({
-    amount: defaultValues?.amount?.toString() || "",
-    date: defaultValues?.date.toISOString().slice(0, 10) || "",
-    description: defaultValues?.description || "",
+  const [inputs, setInputs] = useState({
+    amount: {
+      value: defaultValues?.amount?.toString() || "",
+      isValid: true,
+    },
+    date: {
+      value: defaultValues?.date.toISOString().slice(0, 10) || "",
+      isValid: true,
+    },
+    description: {
+      value: defaultValues?.description || "",
+      isValid: true,
+    },
   });
 
   const inputChangedHandler = (inputIdentifier, entered) => {
-    setInputValues((prevState) => {
-      return { ...prevState, [inputIdentifier]: entered };
+    setInputs((prevState) => {
+      return {
+        ...prevState,
+        [inputIdentifier]: { value: entered, isValid: true },
+      };
     });
   };
   const submitHandler = () => {
     const expenseData = {
-      amount: +inputValues.amount,
-      date: new Date(inputValues.date),
-      description: inputValues.description,
+      amount: +inputs.amount.value,
+      date: new Date(inputs.date.value),
+      description: inputs.description.value,
     };
+
+    // Validation
+    const amountIsValid = !isNaN(expenseData.amount) && expenseData.amount > 0;
+    const dateIsValid = expenseData.date.toString() !== "Invalid Date";
+    const descriptionIsValid = expenseData.description.trim().length > 0;
+
+    if (!amountIsValid || !dateIsValid || !descriptionIsValid) {
+      // Alert.alert("Invalid input", "Please check your input!");
+      setInputs((prevState) => {
+        return {
+          amount: { value: prevState.amount.value, isValid: amountIsValid },
+          date: { value: prevState.date.value, isValid: dateIsValid },
+          description: {
+            value: prevState.description.value,
+            isValid: descriptionIsValid,
+          },
+        };
+      });
+      return;
+    }
     onSubmit(expenseData);
   };
+
+  const formIsInvalid =
+    !inputs.amount.isValid ||
+    !inputs.date.isValid ||
+    !inputs.description.isValid;
 
   return (
     <View style={styles.view}>
@@ -36,18 +73,20 @@ const ExpenseForm = ({
       <View style={styles.inputsRow}>
         <Input
           label={"Amount"}
+          invalid={!inputs.amount.isValid}
           textInputConfig={{
             keyboardType: "decimal-pad",
             onChangeText: inputChangedHandler.bind(this, "amount"),
-            value: inputValues.amount,
+            value: inputs.amount.value,
           }}
           style={styles.rowInput}
         />
         <Input
           label={"Date"}
+          invalid={!inputs.date.isValid}
           textInputConfig={{
             onChangeText: inputChangedHandler.bind(this, "date"),
-            value: inputValues.date,
+            value: inputs.date.value,
             placeholder: "YYYY-MM-DD",
             maxLength: 10,
           }}
@@ -56,14 +95,22 @@ const ExpenseForm = ({
       </View>
       <Input
         label={"Description"}
+        invalid={!inputs.description.isValid}
         textInputConfig={{
           onChangeText: inputChangedHandler.bind(this, "description"),
-          value: inputValues.description,
+          value: inputs.description.value,
           multiline: true,
           autoCorrect: false,
           autoCapitalize: "sentences",
         }}
       />
+
+      {formIsInvalid && (
+        <Text style={styles.errorText}>
+          Invalid input values - please check
+        </Text>
+      )}
+
       <View style={styles.buttonContainer}>
         <Button mode={"flat"} onPress={onCancel} style={styles.buttonStyle}>
           Cancel
@@ -98,6 +145,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   rowInput: { flex: 1 },
+  errorText: {
+    textAlign: "center",
+    color: GlobalStyles.colors.error500,
+    fontWeight: "bold",
+    margin: 8,
+  },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "center",
