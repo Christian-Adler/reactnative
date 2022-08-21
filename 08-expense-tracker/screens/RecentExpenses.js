@@ -14,7 +14,11 @@ const RecentExpenses = (props) => {
   });
 
   return (
-    <ExpensesOutput expensesPeriod={"Last 7 Days"} expenses={recentExpenses} />
+    <ExpensesOutput
+      expensesPeriod={"Last 7 Days"}
+      fallbackText={"No expenses registered for the last 7 days."}
+      expenses={recentExpenses}
+    />
   );
 };
 
