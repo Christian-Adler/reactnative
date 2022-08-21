@@ -19,7 +19,7 @@ const colors = GlobalStyles.colors;
 const ExpensesOverview = () => {
   return (
     <BottomTabs.Navigator
-      screenOptions={{
+      screenOptions={({ navigation }) => ({
         headerStyle: { backgroundColor: colors.primary500 },
         headerTintColor: colors.white,
         tabBarStyle: { backgroundColor: colors.primary500 },
@@ -29,10 +29,12 @@ const ExpensesOverview = () => {
             icon={"add"}
             size={24}
             color={tintColor}
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate(NAV.ManageExpense);
+            }}
           />
         ),
-      }}
+      })}
     >
       <BottomTabs.Screen
         name={NAV.RecentExpenses}
