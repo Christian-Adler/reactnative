@@ -10,7 +10,7 @@ const RecentExpenses = (props) => {
   const today = new Date();
   const date7DaysAgo = getDateMinusDays(today, 7);
   const recentExpenses = expensesCtx.expenses.filter((expense) => {
-    return expense.date <= date7DaysAgo;
+    return expense.date > date7DaysAgo;
   });
 
   return (
