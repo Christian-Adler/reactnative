@@ -1,11 +1,10 @@
 import ExpensesOutput from "../components/ExpensesOutput/ExpensesOutput";
-import { StyleSheet } from "react-native";
 import { useContext, useEffect } from "react";
 import { getDateMinusDays } from "../util/date";
 import { fetchExpenses } from "../util/http";
 import { ExpensesContext } from "../store/expenses-context";
 
-const RecentExpenses = (props) => {
+const RecentExpenses = () => {
   const expensesCtx = useContext(ExpensesContext);
 
   useEffect(() => {
@@ -34,17 +33,3 @@ const RecentExpenses = (props) => {
 };
 
 export default RecentExpenses;
-
-const styles = StyleSheet.create({
-  view: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 8,
-  },
-  text: {
-    marginHorizontal: 4,
-    fontSize: 12,
-  },
-});
