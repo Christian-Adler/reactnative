@@ -1,34 +1,41 @@
-import { useState } from 'react';
-import { Alert, StyleSheet, View } from 'react-native';
+import {useState} from 'react';
+import {Alert, StyleSheet, View} from 'react-native';
 
 import FlatButton from '../ui/FlatButton';
 import AuthForm from './AuthForm';
-import { Colors } from '../../constants/styles';
+import {Colors} from '../../constants/styles';
+import {useNavigation} from "@react-navigation/native";
 
 function AuthContent({ isLogin, onAuthenticate }) {
-
+  const navigation = useNavigation();
+  
   const [credentialsInvalid, setCredentialsInvalid] = useState({
     email: false,
     password: false,
     confirmEmail: false,
     confirmPassword: false,
   });
-
+  
   function switchAuthModeHandler() {
-    // Todo
+    if (isLogin) {
+      navigation.replace('Signup'); // replace statt navigate -> nach wie vor animatin aber kein Back-Button
+    }
+    else {
+      navigation.replace('Login');
+    }
   }
-
+  
   function submitHandler(credentials) {
     let { email, confirmEmail, password, confirmPassword } = credentials;
-
+    
     email = email.trim();
     password = password.trim();
-
+    
     const emailIsValid = email.includes('@');
     const passwordIsValid = password.length > 6;
     const emailsAreEqual = email === confirmEmail;
     const passwordsAreEqual = password === confirmPassword;
-
+    
     if (
       !emailIsValid ||
       !passwordIsValid ||
@@ -45,7 +52,7 @@ function AuthContent({ isLogin, onAuthenticate }) {
     }
     onAuthenticate({ email, password });
   }
-
+  
   return (
     <View style={styles.authContent}>
       <AuthForm
