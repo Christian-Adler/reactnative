@@ -1,7 +1,7 @@
 import {authenticate, createUser} from "../util/auth";
 import {useState} from "react";
-import TransparentLoadingOverlay from "../components/ui/TransparentLoadingOverlay";
 import {Alert} from "react-native";
+import AuthContent from "../components/Auth/AuthContent";
 
 function SignupScreen() {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -20,10 +20,7 @@ function SignupScreen() {
     return <LoadingOverlay message={'Creating user...'}/>
   }
   
-  return (
-    <>
-      <TransparentLoadingOverlay message={'test Message'}/>
-    </>);
+  return (<AuthContent onAuthenticate={signupHandler}/>);
 }
 
 export default SignupScreen;
