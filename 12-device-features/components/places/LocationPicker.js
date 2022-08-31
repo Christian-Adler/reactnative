@@ -3,12 +3,12 @@ import OutlinedButton from "../ui/OutlinedButton";
 import {Colors} from "../../constants/colors";
 import {getCurrentPositionAsync, PermissionStatus, useForegroundPermissions} from "expo-location";
 
-const LocationPicker = (props) => {
+const LocationPicker = ({ onPickLocation }) => {
   
   const [locationPermissionInformation, requestPermission] = useForegroundPermissions();
   
   const verifyPermissions = async () => {
-    if (locationPermissionInformation.status === PermissionStatus.UNDETERMINED) {
+    if (locationPermissionInformation.status !== PermissionStatus.GRANTED) {
       const permissionResponse = await requestPermission();
       return permissionResponse.granted;
     }
@@ -26,10 +26,21 @@ const LocationPicker = (props) => {
   
   const getLocationHandler = async () => {
     const hasPermission = await verifyPermissions();
-    if (!hasPermission) return;
+    if (!hasPermission) {
+      console.log('No location permission');
+      return;
+    }
     
-    const location = await getCurrentPositionAsync();
-    console.log(location);
+    const location = await getCurrentPositionAsync(); // Das dauert! Solange sollte was angezeigt werden. Sonst klickt man zu frueh
+    console.log('location detected: ', location);
+    // getAddress with Google geo code reverse api (cost!)
+    if (location) {
+      const pickedLoc = { lat: location.coords.latitude, lng: location.coords.longitude, address: 'some address...' };
+      // console.log('picked : ', pickedLoc);
+      onPickLocation(pickedLoc);
+    }
+    else
+      console.log('No location');
   };
   const pickOnMapHandler = () => {
   
