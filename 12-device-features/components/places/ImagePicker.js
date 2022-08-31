@@ -1,19 +1,14 @@
-import { Alert, Image, StyleSheet, Text, View } from "react-native";
-import {
-  launchCameraAsync,
-  PermissionStatus,
-  useCameraPermissions,
-} from "expo-image-picker";
-import { useState } from "react";
-import { Colors } from "../../constants/colors";
+import {Alert, Image, StyleSheet, Text, View} from "react-native";
+import {launchCameraAsync, PermissionStatus, useCameraPermissions,} from "expo-image-picker";
+import {useState} from "react";
+import {Colors} from "../../constants/colors";
 import OutlinedButton from "../ui/OutlinedButton";
 
 const ImagePicker = () => {
   const [pickedImage, setPickedImage] = useState();
-
-  const [cameraPermissionInformation, requestPermission] =
-    useCameraPermissions();
-
+  
+  const [cameraPermissionInformation, requestPermission] = useCameraPermissions();
+  
   const verifyPermissions = async () => {
     if (cameraPermissionInformation.status === PermissionStatus.UNDETERMINED) {
       const permissionResponse = await requestPermission();
@@ -26,14 +21,14 @@ const ImagePicker = () => {
       );
       return false;
     }
-
+    
     return true;
   };
-
+  
   const takeImageHandler = async () => {
     const hasPermission = await verifyPermissions();
     if (!hasPermission) return;
-
+    
     const image = await launchCameraAsync({
       allowsEditing: true,
       aspect: [16, 9],
@@ -42,11 +37,11 @@ const ImagePicker = () => {
     // console.log(image);
     if (!image.cancelled) setPickedImage(image.uri);
   };
-
+  
   let imagePreview = <Text>No image taken yet</Text>;
   if (pickedImage)
-    imagePreview = <Image style={styles.image} source={{ uri: pickedImage }} />;
-
+    imagePreview = <Image style={styles.image} source={{ uri: pickedImage }}/>;
+  
   return (
     <View>
       <View style={styles.imagePreview}>{imagePreview}</View>

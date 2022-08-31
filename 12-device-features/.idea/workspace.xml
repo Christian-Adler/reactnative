@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bb5340f-631f-4615-b240-71882a10792e" name="Changes" comment="added outlinedButton">
-      <change beforePath="$PROJECT_DIR$/.idea/12-device-features.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/12-device-features.iml" afterDir="false" />
+    <list default="true" id="5bb5340f-631f-4615-b240-71882a10792e" name="Changes" comment="added babel plugin to use reanimated 2 with drawer without exceptions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/places/ImagePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/places/ImagePicker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/places/PlaceForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/places/PlaceForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +80,8 @@
       <option name="presentableId" value="Default" />
       <updated>1661801788786</updated>
       <workItem from="1661801791062" duration="1528000" />
-      <workItem from="1661925192046" duration="760000" />
+      <workItem from="1661925192046" duration="2665000" />
+      <workItem from="1661946359379" duration="227000" />
     </task>
     <task id="LOCAL-00001" summary="added outlinedButton">
       <created>1661802418561</created>
@@ -92,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661802418561</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added babel plugin to use reanimated 2 with drawer without exceptions">
+      <created>1661926359890</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1661926359890</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,7 +116,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added outlinedButton" />
-    <option name="LAST_COMMIT_MESSAGE" value="added outlinedButton" />
+    <MESSAGE value="added babel plugin to use reanimated 2 with drawer without exceptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="added babel plugin to use reanimated 2 with drawer without exceptions" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
