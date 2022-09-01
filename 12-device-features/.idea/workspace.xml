@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bb5340f-631f-4615-b240-71882a10792e" name="Changes" comment="added location picker">
+    <list default="true" id="5bb5340f-631f-4615-b240-71882a10792e" name="Changes" comment="completed places form and places display/styling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Screens/AddPlace.js" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/AddPlace.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Screens/AllPlaces.js" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/AllPlaces.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/places/ImagePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/places/ImagePicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/places/LocationPicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/places/LocationPicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/places/PlaceForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/places/PlaceForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screens/PlaceDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/Screens/PlaceDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/places/PlaceItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/places/PlaceItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/places/PlacesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/places/PlacesList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/place.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/place.js" afterDir="false" />
@@ -26,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="ReactNativeFunctionComponent" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -44,24 +44,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\chris\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "fileTemplates",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2020.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\chris\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2020.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -89,7 +89,8 @@
       <updated>1661801788786</updated>
       <workItem from="1661801791062" duration="1528000" />
       <workItem from="1661925192046" duration="2665000" />
-      <workItem from="1661946359379" duration="9611000" />
+      <workItem from="1661946359379" duration="12409000" />
+      <workItem from="1662001916153" duration="5859000" />
     </task>
     <task id="LOCAL-00001" summary="added outlinedButton">
       <created>1661802418561</created>
@@ -112,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661946803636</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="completed places form and places display/styling">
+      <created>1661972464897</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1661972464897</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,7 +141,8 @@
     <MESSAGE value="added outlinedButton" />
     <MESSAGE value="added babel plugin to use reanimated 2 with drawer without exceptions" />
     <MESSAGE value="added location picker" />
-    <option name="LAST_COMMIT_MESSAGE" value="added location picker" />
+    <MESSAGE value="completed places form and places display/styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="completed places form and places display/styling" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
