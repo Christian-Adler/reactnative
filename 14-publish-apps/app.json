@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "My Recipe Book (ca)",
+    "slug": "RNCourse",
+    "version": "1.0.0",
+    "owner": "christian-adl",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "backgroundColor": "#24180f",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "versionCode": 1,
+      "package": "com.eagleware.recipebook"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5bb84ef3-056c-472b-b09e-5b026ef08850"
+      }
+    }
+  }
+}
